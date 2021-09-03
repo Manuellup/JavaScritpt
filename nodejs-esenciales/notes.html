@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Notas</title>
+    Titulo: <input type="text" id="tituloNota">
+    Contenido: <input type="text" id="contenidoNota" value="">
+    <input type="submit" id="agregar">
+
+    <div id="notas">
+      
+    </div>
+
+</head>
+
+<body>
+
+    <script>
+        //obtengo todos los elementos del DOM
+        const tituloNota = document.getElementById("tituloNota")
+        const contenidoNota = document.getElementById("contenidoNota")
+        const btnEnviar = document.getElementById("agregar")
+        const listaNotas = document.getElementById("notas")
+    
+        btnEnviar.addEventListener("click", () => {
+            fetch('http://localhost:3000/notes', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: tituloNota.value,
+                    content: contenidoNota.value
+                }),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })//termina fetch
+                .then(response => response.json())
+                .then(json => console.log(json))
+                .finally(()=>{
+                    tituloNota.value = ""
+                    contenidoNota.value = ""
+                    cargarNotas()
+                })
+
+           
+         
+        });//termina el evento del boton 
+
+        function cargarNotas() {
+            fetch('http://localhost:3000/notes')
+        .then(response => {
+            if(!response.ok) throw Error(response.status)
+            return response.json()
+        })
+        .then(notas => {
+            // nombre.value = notas.content
+            // email.value = notas.title
+            while(listaNotas.firstChild)
+            listaNotas.removeChild(listaNotas.firstChild);
+
+            for( nota of notas){
+                var currentNoteTitle = document.createElement("p")
+                var currentNoteContent = document.createElement("p")
+                //asignar un html
+                currentNoteTitle.innerHTML = `Titulo nota: ${nota.title}`
+                currentNoteContent.innerHTML = `Contenido nota: ${nota.content}`
+                
+                listaNotas.appendChild(currentNoteTitle)
+                listaNotas.appendChild(currentNoteContent)
+                
+               
+            }
+          
+          
+
+        })
+        .catch(error => console.log("no se pudo conectar"))
+        }
+
+        cargarNotas()
+    </script>
+</body>
+
+</html>

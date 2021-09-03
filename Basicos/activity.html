@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>To-Do List</title>
+    <link href="https://fonts.googleapis.com/css?family=Architects+Daughter|Bowlby+One+SC" rel="stylesheet">
+    <style>
+        body {
+            background-color:rgb(37, 37, 37);
+            color:aliceblue;
+            padding:2rem;
+            margin:0;
+            font-family: 'Architects Daughter', cursive;
+            font-size: 12px;
+        }
+        h1 {
+            font-family: 'Bowlby One SC', cursive;
+            font-size: 2.8rem;
+            color: cornflowerblue;
+            margin:0;
+        }
+        ol {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 1.6rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <ol id="myList">
+        <li>Wash Laundry</li>
+        <li>Clean Silver</li>
+        <li>Write Letters</li>
+        <li>Purchase Groceries</li>
+        <li>Retrieve Mail</li>
+        <li>Prepare Dinner</li>
+    </ol>
+    <script>
+        // JavaScript here!
+      
+        var list = document.getElementById('myList');
+        console.log("Numero de elementos en la lista antes de agregar " + list.children.length);
+        var newTodo = document.createElement('li');
+        newTodo.innerHTML = 'New todo';
+        list.appendChild(newTodo);
+        list.lastChild.style.color = "#aa2299"
+        console.log("Numero de elementos en la lista despues de agregar " + list.children.length);
+        //obtiene todos los elementos de con el tag li y devuelve 
+        listElements = document.getElementsByTagName("li");
+        for(let element = 0; element < listElements.length; element ++)
+        {
+            listElements[element].style.color = element % 2 == 0 ? "cyan" : "blue"          
+        }
+    </script>
+</body>
+</html>

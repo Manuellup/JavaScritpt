@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Manuel",
+        "apellidoMaterno": "Hernandez",
+        "apellidoPaterno": "Gomez",
+        "email": "manuel@gmail.com"
+    },
+    {
+        "name": "Luis",
+        "apellidoMaterno": "Ramirez",
+        "apellidoPaterno": "Gutierrez",
+        "email": "Luis@gmail.com"
+    },
+    {
+        "name": "Juan",
+        "apellidoMaterno": "Santeliz",
+        "apellidoPaterno": "Fernandez",
+        "email": "Juan@gmail.com"
+    }
+]

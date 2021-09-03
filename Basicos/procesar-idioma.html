@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+<head charset="utf-8">
+
+</head>
+    <body>
+        English: <input type="radio" name="currentLanguage" onclick="greetins(this)" value="english" id="english"> 
+        Español: <input type="radio" name="currentLanguage" onclick="greetins(this)" value="spanish" id="spanish"><br>
+        <input type="submit" id="enviar">
+        
+        <script>
+            //obtenemos los elementos del dom
+            const input1 = document.getElementById("english")
+            const input2 = document.getElementById("spanish")
+            const input3 = document.getElementById("enviar")
+            //agregamos el nombre
+
+         
+
+         var eventHandler;
+
+         function greetins(radioButton)
+         {
+            input3.removeEventListener("click",eventHandler)
+            if(radioButton.value === "english")
+                 eventHandler = helloInEnglish;
+            else
+                eventHandler = holaInSpanish;
+            input3.addEventListener("click", eventHandler);
+         }
+
+         var holaInSpanish = function(){
+            alert("hola, usuario")
+
+         }
+
+         var helloInEnglish = function(){
+             alert("hello, user")
+         }
+        </script>
+    </body>
+</html>

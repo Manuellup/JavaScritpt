@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head charset="utf-8">
+        <title>DOM</title>
+    </head>
+    <body>
+        <input id="input1"></input>
+        <input id="input2"></input>
+        <input id="input3"></input>
+
+        <button disabled>Buton 1</button>
+        <button disabled>Boton 2</button>
+        
+        <script>
+            //obtenemos todos los elementos del dom
+        
+            const input1 = document.getElementById("input1");
+            const input2 = document.getElementById("input2");
+            const input3 = document.getElementById("input3");
+            var botones = document.getElementsByTagName("button");
+                        
+            //asignamos los eventos
+            input1.addEventListener("keyup", validarBotones);
+            input2.addEventListener("keyup", validarBotones);
+            input3.addEventListener("keyup", validarBotones);
+
+            //funcion que se encarga de validar los botones 
+            function validarBotones()
+            {
+                const textInput1 =  input1.value.length;
+                const textInput2 =  input2.value.length;
+                const textInput3 =  input3.value.length;
+                
+                if(textInput1> 0 && textInput2>0 && textInput3>0)
+                {
+                    for (const b of botones)
+                    {
+                        b.disabled = false;
+                    }
+                }
+                else{
+                    for (const b of botones)
+                    {
+                        b.disabled = true;
+                    }
+                }
+                
+            }
+            
+
+            
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head charset="utf-8">
+        <title>DOM</title>
+    </head>
+    <body>
+        <div id="buttonGroup">
+            <button id="btn1">Boton 1</button>
+            <button id="btn2">Boton 2</button>
+            <button id="btn3">Boton 3</button>
+        <div>
+
+        
+    </body>
+        <script>
+            console.log(document.children);
+
+            botones = document.getElementsByTagName('button')
+            boton = document.getElementById('btn1')
+            console.log(botones)
+
+            buttonGroup = document.getElementById("buttonGroup")
+            var newButton = document.createElement('button')
+            newButton.innerText = "Boton 4"
+            buttonGroup.appendChild(newButton)
+
+            for (const boton of botones) {
+                boton.style.color = "blue";
+            }
+
+            boton.addEventListener("click",()=> alert("Boton 1"));
+        </script>
+<html>
